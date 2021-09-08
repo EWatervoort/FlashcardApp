@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { listCards } from "../utils/api";
+import React from "react";
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { deleteDeck } from "../utils/api";
 
