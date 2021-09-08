@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useRouteMatch, useHistory } from 'react-router-dom'
-import { listCards, deleteDeck, deleteCard, readDeck } from "../utils/api";
+import { deleteDeck, deleteCard, readDeck } from "../utils/api";
 
 function DeckView() {
   const [deckInfo, setDeckInfo] = useState([]);
-  const [cardList, setCardList] = useState([])
   const params = useParams();
   const { url } = useRouteMatch();
   const history = useHistory();
@@ -17,14 +16,6 @@ function DeckView() {
     getDeck();
   }, [params]);
 
-  useEffect(() => {
-    const getCardList = async () => {
-      const response = await listCards(params.deckId)
-      setCardList(response);
-    }
-    getCardList();
-  }, [params])
-
   const deleteDeckButton = async (event) => {
     if (window.confirm('Delete this deck? You will not be able to recover it.')) {
       await deleteDeck(params.deckId)
@@ -32,7 +23,7 @@ function DeckView() {
     }
   }
 
-  const cards = cardList.map((card, i) => {
+  const cards = deckInfo.cards && deckInfo.cards.map((card, i) => {
     const deleteButton = async (event) => {
       if (window.confirm('Delete this card? You will not be able to recover it.')) {
         await deleteCard(card.id)
@@ -55,7 +46,6 @@ function DeckView() {
     );
   });
   
-
   return (
     <div>
       <nav aria-label="breadcrumb">
@@ -79,7 +69,7 @@ function DeckView() {
       </Link>
         <button type="button" class="btn btn-danger" onClick={deleteDeckButton}>Delete</button>
       <h1>Cards</h1>
-      {cards}
+        {cards}
     </div>
   )
 }

@@ -22,7 +22,7 @@ function EditDeck() {
   }
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <Link to={'/'}>
@@ -42,7 +42,7 @@ function EditDeck() {
         deckId={deckInfo.id}
       />
       <button type="button" onClick={handleCancel}>Cancel</button>
-    </>
+    </div>
   )
 }
 

@@ -1,46 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams} from 'react-router-dom'
-import { readDeck, listCards } from "../utils/api";
+import { readDeck } from "../utils/api";
 import NotEnoughCards from "./NotEnoughCards";
 import Cards from "./Cards";
 
 function Study() {
   const [deckInfo, setDeckInfo] = useState([]);
-  const [cardList, setCardList] = useState([])
-  const params = useParams();
+  const { deckId } = useParams();
 
   useEffect(() => {
-    const getDeck = async () => {
-      const response = await readDeck(params.deckId);
-      setDeckInfo(response);
+    const controller = new AbortController()
+    const { signal } = controller
+     const getDeck = async () => {
+       try {
+         const response = await readDeck(deckId, signal);
+         setDeckInfo(response);
+       } catch(e) {
+         console.log(e)
+       }
+      
     }
     getDeck();
-  }, [params])
-
-  useEffect(() => {
-    const getCardList = async () => {
-      const response = await listCards(params.deckId)
-      setCardList(response);
+    return () => {
+      controller.abort()
     }
-    getCardList();
-  }, [params])
+  }, [deckId])
 
-  const deckLength = cardList.length
+  const deckLength = deckInfo.cards && deckInfo.cards.length 
   if (deckLength < 3) {
     return (
-      <NotEnoughCards cardList={cardList} deckInfo={deckInfo}/>
+      <NotEnoughCards deckLength={deckLength} deckInfo={deckInfo}/>
     )
   }
-  
+
   return (
     <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <Link to={'/'}>
-            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Home / </li>
           </Link>
-          <Link to={`/decks/${deckInfo.id})`}>
-            <li class="breadcrumb-item">{`/ ${deckInfo.name}`}</li>
+          <Link to={`/decks/${deckInfo.id}`}>
+            <li class="breadcrumb-item">{deckInfo.name}</li>
           </Link>
           <li class="breadcrumb-item active" aria-current="page">/ Study</li>
         </ol>

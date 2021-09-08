@@ -10,7 +10,7 @@ function CreateDeck () {
   }
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <Link to={'/'}>
@@ -22,7 +22,7 @@ function CreateDeck () {
       <h1>Create Deck</h1>
       <DeckForm descriptionInput={"Brief description of the deck"} nameInput={"Deck Name"} deckType={'create'}/>
       <button type="button" onClick={handleCancel}>Cancel</button>
-    </>
+    </div>
   )
 }
 

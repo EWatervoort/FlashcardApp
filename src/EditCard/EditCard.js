@@ -31,7 +31,7 @@ function EditCard () {
   }
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <Link to={'/'}>
@@ -50,7 +50,7 @@ function EditCard () {
         cardType={'edit'}
       />
       <button type="button" className='btn btn-secondary' onClick={handleCancel}>Cancel</button>
-    </>
+    </div>
   )
 }
 
