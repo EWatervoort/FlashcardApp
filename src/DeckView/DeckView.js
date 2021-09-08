@@ -31,11 +31,11 @@ function DeckView() {
       }
     }
     return (
-      <div class="card">
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
+      <div key={i} className="card">
+        <div className="card-body">
+          <blockquote className="blockquote mb-0">
             <p>{card.front}</p>
-            <footer class="blockquote-footer">{card.back}</footer>
+            <footer className="blockquote-footer">{card.back}</footer>
           </blockquote>
         </div>
         <Link to={`${url}/cards/${card.id}/edit`}>
@@ -49,25 +49,25 @@ function DeckView() {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol className="breadcrumb">
           <Link to={'/'}>
-            <li class="breadcrumb-item">Home</li>
+            <li className="breadcrumb-item">Home</li>
           </Link>
-          <li class="breadcrumb-item active" aria-current="page">/ {deckInfo.name}</li>
+          <li className="breadcrumb-item active" aria-current="page">/ {deckInfo.name}</li>
         </ol>
       </nav>
       <h2>{deckInfo.name}</h2>
       <p>{deckInfo.description}</p>
       <Link to={`${url}/edit`}>
-        <button type="button" class="btn btn-secondary mr-2">Edit</button>
+        <button type="button" className="btn btn-secondary mr-2">Edit</button>
       </Link>
       <Link to={`${url}/study`}>
-        <button type="button"class="btn btn-primary mr-2">Study</button>
+        <button type="button"className="btn btn-primary mr-2">Study</button>
       </Link>
       <Link to={`${url}/cards/new`}>
-        <button type="button" class="btn btn-primary mr-5">Add Cards</button>
+        <button type="button" className="btn btn-primary mr-5">Add Cards</button>
       </Link>
-        <button type="button" class="btn btn-danger" onClick={deleteDeckButton}>Delete</button>
+        <button type="button" className="btn btn-danger" onClick={deleteDeckButton}>Delete</button>
       <h1>Cards</h1>
         {cards}
     </div>

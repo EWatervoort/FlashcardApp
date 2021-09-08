@@ -26,7 +26,7 @@ function DeckTile({ deck }) {
         <Link to= {`${url}decks/${deck.id}/study`}>
           <button type="button" className="btn btn-primary mr-2">Study</button>
         </Link>
-        <button type="button" className="btn btn-danger" onClick={deleteButton}>Delete</button>
+        <button type="button" className="btn btn-danger" onClick={deleteButton} key={deck.Id}>Delete</button>
       </div>
     </div>
   )

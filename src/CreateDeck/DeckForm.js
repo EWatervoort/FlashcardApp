@@ -4,17 +4,17 @@ import { createDeck, updateDeck } from "../utils/api";
 
 function DeckForm({ nameInput, descriptionInput, deckType, deckId }) {
   const initialDeckState = {
-    name: nameInput,
-    description: descriptionInput,
-    id: deckId
+    name: '',
+    description: '',
+    id: ''
   };
   const [deckData, setDeckData] = useState({ ...initialDeckState });
 
   useEffect(() => {
     setDeckData({
-      name: nameInput,
-      description: descriptionInput,
-      id: deckId
+      name: nameInput || '',
+      description: descriptionInput || '',
+      id: deckId || ''
     });
   }, [nameInput, descriptionInput, deckId]);
 

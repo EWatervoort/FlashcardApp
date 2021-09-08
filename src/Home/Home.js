@@ -26,7 +26,7 @@ function Home() {
 
   const decks = deckList.map((deck, i) => {
     return (
-      <DeckTile deck={deck} />
+      <DeckTile key={i} deck={deck} />
     )
   });
 

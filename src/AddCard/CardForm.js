@@ -8,7 +8,7 @@ function CardForm({ frontInput, backInput, cardType }) {
     front: frontInput,
     back: backInput,
     id: cardId,
-    deckId: deckId
+    deckId: parseInt(deckId)
   };
   const [cardData, setCardData] = useState({ ...initialCardState });
 
@@ -17,7 +17,7 @@ function CardForm({ frontInput, backInput, cardType }) {
       front: frontInput,
       back: backInput,
       id: cardId,
-      deckId: deckId
+      deckId: parseInt(deckId)
     });
   }, [frontInput, backInput, cardId, deckId]);
 
@@ -37,7 +37,6 @@ function CardForm({ frontInput, backInput, cardType }) {
       setCardData({ ...initialCardState })
       history.go(0)
     } else if (cardType === 'edit') {
-      console.log(cardData)
         await updateCard(cardData)
         setCardData({ ...initialCardState })
         history.push(`/decks/${deckId}`)

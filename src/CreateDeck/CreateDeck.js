@@ -12,11 +12,11 @@ function CreateDeck () {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol className="breadcrumb">
           <Link to={'/'}>
-            <li class="breadcrumb-item">Home</li>
+            <li className="breadcrumb-item">Home</li>
           </Link>
-          <li class="breadcrumb-item active" aria-current="page">\ Create Deck</li>
+          <li className="breadcrumb-item active" aria-current="page">\ Create Deck</li>
         </ol>
       </nav>
       <h1>Create Deck</h1>

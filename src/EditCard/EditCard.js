@@ -33,14 +33,14 @@ function EditCard () {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol className="breadcrumb">
           <Link to={'/'}>
-            <li class="breadcrumb-item">Home</li>
+            <li className="breadcrumb-item">Home</li>
           </Link>
           <Link to={`/decks/${deckInfo.id}`}>
-            <li class="breadcrumb-item">{`/ Deck ${deckInfo.name}`}</li>
+            <li className="breadcrumb-item">{`/ Deck ${deckInfo.name}`}</li>
           </Link>
-          <li class="breadcrumb-item active" aria-current="page">{`/ Edit Card ${params.cardId}`}</li>
+          <li className="breadcrumb-item active" aria-current="page">{`/ Edit Card ${params.cardId}`}</li>
         </ol>
       </nav>
       <h1>Edit Card</h1>
